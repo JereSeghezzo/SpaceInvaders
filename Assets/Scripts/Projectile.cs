@@ -10,4 +10,9 @@ void Update()
 {
   this.transform.position += this.direction * speed * Time.deltaTime;
 }
+
+void OnTriggerEnter2D(Collider2D other) 
+{
+  Destroy(this.gameObject);  
+}
 }
