@@ -5,7 +5,6 @@ public class Player : MonoBehaviour
  [SerializeField] float speed;
  [SerializeField] float shootCD;
  float cd;
- public Projectile laserPrefab;
 
  private void Update()
  {
@@ -31,7 +30,12 @@ public class Player : MonoBehaviour
 
  private void Shoot()
  {
-  Instantiate(this.laserPrefab, this.transform.position, Quaternion.identity);
+ GameObject laser = LaserPooling.instance.GetNewLaser();
+ laser.transform.position = this.transform.position;
+ laser.GetComponent<Projectile>().direction = new Vector3(0, 1, 0); 
+ laser.GetComponent<SpriteRenderer>().color = Color.green;
+ laser.layer = 8;
+ laser.SetActive(true);
   cd = 0f;
  }
 }

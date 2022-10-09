@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+ [SerializeField] int lifes;
+ int points;
+ [SerializeField] Text pointsText,lifesText;
+ GameObject playerPrefab, playerActive;
+ [SerializeField] Vector3 spawnPosition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+void Start()
+{
+ playerPrefab = Resources.Load<GameObject>("Prefabs/Player");
+ InstantiatePlayer();
+}
+
+ void InstantiatePlayer()
+ {
+    playerActive = Instantiate(playerPrefab,spawnPosition, Quaternion.identity);
+ }
 }

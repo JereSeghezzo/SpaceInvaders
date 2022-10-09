@@ -6,7 +6,6 @@ public class Invader : MonoBehaviour
  [SerializeField] float shootMaxCD;
  float shootReady;
  float cd;
- public Projectile laserPrefab;
 
  void Update()
  {
@@ -20,6 +19,11 @@ public class Invader : MonoBehaviour
  {
   cd = 0f;
   shootReady = Random.Range(shootMinCD, shootMaxCD);
-  Instantiate(this.laserPrefab, this.transform.position, Quaternion.identity);
+  GameObject laser = LaserPooling.instance.GetNewLaser();
+  laser.transform.position = this.transform.position;
+  laser.GetComponent<Projectile>().direction = new Vector3(0, -1, 0); 
+  laser.GetComponent<SpriteRenderer>().color = Color.red;
+  laser.layer = 9;
+  laser.SetActive(true);
  }
 }

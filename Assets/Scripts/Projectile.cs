@@ -13,6 +13,10 @@ void Update()
 
 void OnTriggerEnter2D(Collider2D other) 
 {
-  Destroy(this.gameObject);  
+  if(other.GetComponent<Invader>() != null)
+  {
+    other.gameObject.SetActive(false);
+  }
+  this.gameObject.SetActive(false);
 }
 }

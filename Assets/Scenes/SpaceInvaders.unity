@@ -429,6 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 426162714}
   - component: {fileID: 426162713}
+  - component: {fileID: 426162715}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -462,6 +463,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &426162715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426162712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221c04f79a83d3d449b386705c9f46fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToPool: 20
+  lasers: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +574,7 @@ GameObject:
   - component: {fileID: 564918010}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,7 +593,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   shootCD: 1
-  laserPrefab: {fileID: -4441015659727699144, guid: 569055df32599b444888928bdfc320e4, type: 3}
 --- !u!61 &564918011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -880,7 +894,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootMinCD: 0.5
   shootMaxCD: 3
-  laserPrefab: {fileID: -4441015659727699144, guid: d6b4df0264134ae48bc8f90a19b235f0, type: 3}
+  layer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!212 &1437778844
 SpriteRenderer:
   m_ObjectHideFlags: 0
