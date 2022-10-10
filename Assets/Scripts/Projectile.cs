@@ -16,6 +16,12 @@ void OnTriggerEnter2D(Collider2D other)
   if(other.GetComponent<Invader>() != null)
   {
     other.gameObject.SetActive(false);
+     GameManager.findInvadersEvent?.Invoke();
+  }
+
+  if(other.GetComponent<Player>() != null)
+  {
+   GameManager.lifeSustractEvent?.Invoke();
   }
   this.gameObject.SetActive(false);
 }

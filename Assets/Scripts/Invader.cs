@@ -7,6 +7,11 @@ public class Invader : MonoBehaviour
  float shootReady;
  float cd;
 
+ void Start()
+ {
+   shootReady = Random.Range(shootMinCD, shootMaxCD);
+ }
+
  void Update()
  {
     if (cd < shootReady)
