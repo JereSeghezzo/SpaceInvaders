@@ -23,6 +23,7 @@ void Start()
 {
  playerPrefab = Resources.Load<GameObject>("Prefabs/Player");
  InstantiatePlayer();
+ UpdateUI();
 }
 
 void LifeSustract()
@@ -42,6 +43,7 @@ void LifeSustract()
     yield return new WaitForSeconds(time);
     InstantiatePlayer();
     lifes--;
+    UpdateUI();   
  }
 
  void GameOver(string result)
@@ -49,13 +51,16 @@ void LifeSustract()
   if(result == "Lose")
    {
     loseScreen.SetActive(true);
-   } else winScreen.SetActive(true);
+   } else if(result == "Win") winScreen.SetActive(true);
    foreach (var item in FindObjectsOfType<Invader>()) item.gameObject.SetActive(false);
+   foreach (var item in FindObjectsOfType<Projectile>()) item.gameObject.SetActive(false);
    StartCoroutine(RestartGame());
  }
 
  void FindActiveInvaders()
  {
+  points += 50;  
+  UpdateUI();
   foreach (var item in FindObjectsOfType<Invader>())
   if (item.gameObject.activeInHierarchy) return;
   GameOver("Win");
@@ -65,6 +70,12 @@ void LifeSustract()
  {
   yield return new WaitForSeconds(restartTime);
   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+ }
+
+ void UpdateUI()
+ {
+   lifesText.text = "Lifes :" + lifes; 
+   pointsText.text = "Points :" + points;
  }
 
  private void OnEnable() 
