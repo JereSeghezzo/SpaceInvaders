@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
  private void Shoot()
  {
+ AudioManager.instance.InstantiateSound("shoot");   
  GameObject laser = LaserPooling.instance.GetNewLaser();
  laser.transform.position = this.transform.position;
  laser.GetComponent<Projectile>().direction = new Vector3(0, 1, 0); 

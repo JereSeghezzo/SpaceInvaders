@@ -22,6 +22,7 @@ public class Invader : MonoBehaviour
 
  void Shoot()
  {
+  AudioManager.instance.InstantiateSound("shoot");    
   cd = 0f;
   shootReady = Random.Range(shootMinCD, shootMaxCD);
   GameObject laser = LaserPooling.instance.GetNewLaser();

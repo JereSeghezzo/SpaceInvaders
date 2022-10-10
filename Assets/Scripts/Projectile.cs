@@ -17,11 +17,13 @@ void OnTriggerEnter2D(Collider2D other)
   {
     other.gameObject.SetActive(false);
      GameManager.findInvadersEvent?.Invoke();
+     AudioManager.instance.InstantiateSound("kill");
   }
 
   if(other.GetComponent<Player>() != null)
   {
    GameManager.lifeSustractEvent?.Invoke();
+   AudioManager.instance.InstantiateSound("kill");  
   }
   this.gameObject.SetActive(false);
 }
